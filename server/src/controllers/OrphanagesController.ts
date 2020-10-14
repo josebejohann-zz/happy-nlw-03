@@ -7,19 +7,23 @@ import '../database/connection';
 
 export default {
   async index(request: Request, response: Response) {
-    const { id } = request.params;
-
     const orphanagesRepository = getRepository(Orphanage);
 
-    const orphanage = await orphanagesRepository.find();
+    const orphanage = await orphanagesRepository.find({
+      relations: ['images'],
+    });
 
     return response.json(orphanage);
   },
 
   async show(request: Request, response: Response) {
+    const { id } = request.params;
+
     const orphanagesRepository = getRepository(Orphanage);
 
-    const orphanages = await orphanagesRepository.findOneOrFail();
+    const orphanages = await orphanagesRepository.findOneOrFail(id, {
+      relations: ['images'],
+    });
 
     return response.json(orphanages);
   },
