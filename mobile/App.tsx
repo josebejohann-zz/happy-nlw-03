@@ -9,7 +9,7 @@ import {
 import MapView, {Callout, Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import Feather from 'react-native-vector-icons/Feather';
 
-import mapMarker from './src/assets/map-marker.png';
+import mapMarker from './src/assets/images/map-marker.png';
 
 const App = () => {
   return (
@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
   calloutText: {
     color: '#0089A5',
     fontSize: 14,
+    fontFamily: 'Nunito-Bold',
   },
 
   footer: {
@@ -95,6 +96,7 @@ const styles = StyleSheet.create({
 
   footerText: {
     color: '#8FA7B3',
+    fontFamily: 'Nunito-Bold',
   },
 
   createOrphanageButton: {
