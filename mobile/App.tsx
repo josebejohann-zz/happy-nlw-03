@@ -1,117 +1,109 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
+  Dimensions,
   Text,
-  StatusBar,
+  TouchableOpacity,
 } from 'react-native';
+import MapView, {Callout, Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+import Feather from 'react-native-vector-icons/Feather';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-declare const global: {HermesInternal: null | {}};
+import mapMarker from './src/assets/map-marker.png';
 
 const App = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
+    <View style={styles.container}>
+      <MapView
+        provider={PROVIDER_GOOGLE}
+        style={styles.map}
+        initialRegion={{
+          latitude: -27.5919405,
+          longitude: -48.5602925,
+          latitudeDelta: 0.008,
+          longitudeDelta: 0.008,
+        }}>
+        <Marker
+          icon={mapMarker}
+          coordinate={{latitude: -27.5919405, longitude: -48.5602925}}
+          calloutAnchor={{
+            x: 2.7,
+            y: 0.8,
+          }}>
+          <Callout tooltip onPress={() => {}}>
+            <View style={styles.calloutContainer}>
+              <Text style={styles.calloutText}>Lar Cordeirinhos de Deus</Text>
             </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+          </Callout>
+        </Marker>
+      </MapView>
+
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>2 orfanatos encontrados</Text>
+
+        <TouchableOpacity
+          style={styles.createOrphanageButton}
+          onPress={() => {}}>
+          <Feather name="plus" size={20} color="#FFF" />
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container: {
+    flex: 1,
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+
+  map: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
-  body: {
-    backgroundColor: Colors.white,
+
+  calloutContainer: {
+    width: 160,
+    height: 46,
+    paddingHorizontal: 16,
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 16,
+    justifyContent: 'center',
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+
+  calloutText: {
+    color: '#0089A5',
+    fontSize: 14,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
+
   footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+    position: 'absolute',
+    left: 24,
+    right: 24,
+    bottom: 32,
+
+    backgroundColor: '#FFF',
+    borderRadius: 20,
+    height: 56,
+    paddingLeft: 24,
+
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+
+    elevation: 3,
+  },
+
+  footerText: {
+    color: '#8FA7B3',
+  },
+
+  createOrphanageButton: {
+    width: 56,
+    height: 56,
+    backgroundColor: '#15C3D6',
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
