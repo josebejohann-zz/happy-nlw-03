@@ -52,7 +52,7 @@ export default function CreateOrphanage() {
       data.append('images', image);
     });
 
-    await api.post('/orphanages/create', data);
+    await api.post('/orphanage/create', data);
 
     alert('Cadastro realizado com sucesso!');
 

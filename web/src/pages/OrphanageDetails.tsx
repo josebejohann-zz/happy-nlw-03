@@ -21,7 +21,7 @@ interface Orphanage {
   open_on_weekends: boolean;
   images: {
     id: number;
-    url: string;
+    web_url: string;
   }[];
 }
 
@@ -35,7 +35,7 @@ export default function OrphanageDetails() {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   useEffect(() => {
-    api.get(`/orphanages/${params.id}`).then((response) => {
+    api.get(`/orphanage/${params.id}`).then((response) => {
       setOrphanage(response.data);
     });
   }, [params.id]);
@@ -50,7 +50,7 @@ export default function OrphanageDetails() {
 
       <main>
         <div className="orphanage-details">
-          <img src={orphanage.images[0].url} alt={orphanage.name} />
+          <img src={orphanage.images[0].web_url} alt={orphanage.name} />
 
           <div className="images">
             {orphanage.images.map((image, index) => {
@@ -61,7 +61,7 @@ export default function OrphanageDetails() {
                   type="button"
                   onClick={() => setActiveImageIndex(index)}
                 >
-                  <img src={image.url} alt={orphanage.name} />
+                  <img src={image.web_url} alt={orphanage.name} />
                 </button>
               );
             })}

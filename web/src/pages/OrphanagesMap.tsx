@@ -65,7 +65,7 @@ const OrphanagesMap = () => {
                 className="map-popup"
               >
                 {orphanage.name}
-                <Link to={`/orphanages/${orphanage.id}`}>
+                <Link to={`/orphanage/${orphanage.id}`}>
                   <FiArrowRight size={20} color="#FFF" />
                 </Link>
               </Popup>
@@ -74,7 +74,7 @@ const OrphanagesMap = () => {
         })}
       </Map>
 
-      <Link to="/orphanages/create" className="create-orphanage">
+      <Link to="/orphanage/create" className="create-orphanage">
         <FiPlus size={32} color="#FFF" />
       </Link>
     </div>
