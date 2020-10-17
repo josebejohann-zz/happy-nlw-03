@@ -28,16 +28,16 @@ export default function Routes() {
           }}
         />
         <Screen
-          name="OrphanageData"
-          component={OrphanageData}
+          name="SelectMapPosition"
+          component={SelectMapPosition}
           options={{
             headerShown: true,
             header: () => <Header title="Selecione no mapa" />,
           }}
         />
         <Screen
-          name="SelectMapPosition"
-          component={SelectMapPosition}
+          name="OrphanageData"
+          component={OrphanageData}
           options={{
             headerShown: true,
             header: () => <Header title="Informe os dados" />,

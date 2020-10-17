@@ -8,9 +8,9 @@ const routes = Router();
 const upload = multer(uploadConfig);
 
 routes.get('/orphanages', OrphanagesController.index);
-routes.get('/orphanages/:id', OrphanagesController.show);
+routes.get('/orphanage/:id', OrphanagesController.show);
 routes.post(
-  '/orphanages/create',
+  '/orphanage/create',
   upload.array('images'),
   OrphanagesController.create
 );
